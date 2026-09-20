@@ -268,6 +268,17 @@
       fill: currentColor;
     }
 
+
+    /* Premium app UI refresh */
+    .home-hero{position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;margin-bottom:16px;border-radius:26px;background:linear-gradient(180deg,rgba(9,13,22,.02) 15%,rgba(9,13,22,.92) 100%),radial-gradient(circle at 72% 28%,rgba(168,85,247,.30),transparent 38%),linear-gradient(135deg,#182033,#101522);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 45px rgba(0,0,0,.38)}
+    .hero-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6.5rem;opacity:.20;pointer-events:none}
+    .hero-content{position:relative;z-index:2}.hero-eyebrow{color:#c4b5fd;font-size:.72rem;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px}.hero-title{font-size:2rem;line-height:1.05;font-weight:800;letter-spacing:-1px;margin-bottom:8px}.hero-subtitle{color:rgba(248,250,252,.70);font-size:.86rem;line-height:1.55;max-width:310px;margin-bottom:16px}.hero-start{width:auto;display:inline-flex;padding:13px 18px;border-radius:14px}
+    .streak-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;margin-bottom:16px;border-radius:18px;background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(236,72,153,.10));border:1px solid rgba(255,255,255,.08)}.streak-main{display:flex;align-items:center;gap:12px}.streak-icon{font-size:1.65rem}.streak-value{font-size:1.15rem;font-weight:800}.streak-label{color:var(--text-muted);font-size:.72rem;margin-top:2px}
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 10px}.section-heading-row .section-title{margin:0}.mini-link{color:#a5b4fc;font-size:.72rem;font-weight:700}.modern-stats{grid-template-columns:repeat(2,1fr);gap:10px}.modern-stats .stat-box{text-align:left;padding:16px;min-height:84px}.modern-stats .stat-value{font-size:1.55rem}.stat-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;color:var(--text-muted);font-size:.68rem}.progress-track{height:7px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-top:10px}.progress-track>div{height:100%;width:0%;border-radius:99px;background:var(--gradient-main);transition:width .35s ease}
+    .daily-card{padding:18px;border-radius:20px;background:rgba(18,24,38,.88);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.25);margin-bottom:16px}.daily-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.daily-title{font-size:.98rem;font-weight:800}.daily-badge{font-size:.65rem;font-weight:800;color:#c4b5fd;background:rgba(139,92,246,.12);padding:6px 9px;border-radius:99px}.daily-row{display:flex;justify-content:space-between;color:var(--text-muted);font-size:.75rem;margin-top:10px}
+    .illustration-card{min-height:330px;border-radius:26px;overflow:hidden;position:relative;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(9,13,22,.03) 25%,rgba(9,13,22,.94) 100%),linear-gradient(135deg,#26344a,#111827);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 45px rgba(0,0,0,.35)}.illustration-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:7rem;opacity:.24}.illustration-info{position:relative;z-index:2;width:100%;padding:22px}.word-kicker{color:#c4b5fd;font-size:.7rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:6px}.word-main-large{font-size:2.65rem;font-weight:800;letter-spacing:-1.4px;line-height:1;margin-bottom:8px}.word-meaning-large{font-size:1rem;color:rgba(248,250,252,.78);font-weight:600}
+    .feature-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.feature-chip{padding:13px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}.feature-chip strong{display:block;font-size:.78rem;margin-bottom:3px}.feature-chip span{color:var(--text-muted);font-size:.68rem}
+
     .hidden { display: none !important; }
   </style>
 </head>
@@ -282,38 +293,37 @@
 
   <!-- 1. HOME DASHBOARD -->
   <div id="screen-home" class="screen active">
-    
-    <!-- Stats Overview -->
-    <div class="stats-grid">
-      <div class="stat-box">
-        <div class="stat-value" id="stat-total">0</div>
-        <div class="stat-label">総単語数</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value" style="color: var(--accent);" id="stat-due">0</div>
-        <div class="stat-label">今日の復習</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value" style="color: var(--success);" id="stat-mastered">0</div>
-        <div class="stat-label">定着済み</div>
+    <div class="home-hero">
+      <div class="hero-art">📚</div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Daily Vocabulary</div>
+        <div class="hero-title">今日も、少しずつ<br>語彙を増やそう。</div>
+        <div class="hero-subtitle">あなたの復習状況に合わせて、今日やるべき単語をまとめています。</div>
+        <button class="btn hero-start" onclick="startDailySession()">▶ 今日の学習を始める</button>
       </div>
     </div>
-
-    <!-- Quick Start Card -->
-    <div class="glass-card">
-      <div class="section-title">Today's Session</div>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">忘却曲線に基づいた本日の最適な復習セッション</p>
-      
-      <label style="font-size:0.75rem; color: var(--text-muted); font-weight:600;">1日の目標単語数</label>
+    <div class="streak-card">
+      <div class="streak-main"><div class="streak-icon">🔥</div><div><div class="streak-value" id="streak-value">0日</div><div class="streak-label">連続学習</div></div></div>
+      <div style="text-align:right;"><div style="font-size:.72rem;color:var(--text-muted);">今日の目標</div><div style="font-size:.95rem;font-weight:800;"><span id="goal-count">10</span>語</div></div>
+    </div>
+    <div class="section-heading-row"><div class="section-title">Overview</div><div class="mini-link">MY PROGRESS</div></div>
+    <div class="stats-grid modern-stats">
+      <div class="stat-box"><div class="stat-value" id="stat-due">0</div><div class="stat-label">今日の復習</div><div class="progress-track"><div id="due-progress"></div></div></div>
+      <div class="stat-box"><div class="stat-value" id="stat-mastered">0</div><div class="stat-label">定着済み</div><div class="stat-meta"><span>習得率</span><span id="mastered-rate">0%</span></div></div>
+      <div class="stat-box"><div class="stat-value" id="stat-total">0</div><div class="stat-label">登録単語</div><div class="stat-meta"><span>Library</span><span>📖</span></div></div>
+      <div class="stat-box"><div class="stat-value" id="stat-history">0</div><div class="stat-label">完了セッション</div><div class="stat-meta"><span>Sessions</span><span>✓</span></div></div>
+    </div>
+    <div class="daily-card">
+      <div class="daily-top"><div class="daily-title">Today's Session</div><div class="daily-badge">SRS REVIEW</div></div>
+      <div style="font-size:.78rem;color:var(--text-muted);line-height:1.5;">忘却曲線に合わせて、復習タイミングが来た単語を優先します。</div>
+      <div class="daily-row"><span>1日の目標単語数</span><strong style="color:var(--text);"><span id="goal-preview">10</span>語</strong></div>
       <input type="number" id="daily-limit" value="10" min="1" max="50">
-      
-      <button class="btn" onclick="startDailySession()">⚡ 今日の学習をスタート</button>
+      <button class="btn" onclick="startDailySession()">⚡ 学習セッションを開始</button>
     </div>
-
-    <!-- Actions -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <button class="btn btn-secondary" onclick="switchScreen('add')">＋ 単語追加</button>
-      <button class="btn btn-secondary" onclick="switchScreen('library')">📚 ライブラリ</button>
+    <div class="section-heading-row"><div class="section-title">Your Tools</div></div>
+    <div class="feature-row">
+      <button class="feature-chip" style="text-align:left;border:none;color:var(--text);cursor:pointer;" onclick="switchScreen('add')"><strong>＋ 単語を追加</strong><span>新しい単語を登録</span></button>
+      <button class="feature-chip" style="text-align:left;border:none;color:var(--text);cursor:pointer;" onclick="switchScreen('library')"><strong>📚 ライブラリ</strong><span>登録した単語を見る</span></button>
     </div>
   </div>
 
@@ -367,10 +377,18 @@
       <span id="card-remaining">残り: 0</span>
     </div>
 
-    <div class="glass-card flashcard" onclick="toggleCardMeaning()">
-      <div class="word-main" id="card-word">---</div>
-      <div class="meaning-main hidden" id="card-meaning">---</div>
-      <div class="tap-hint" id="card-hint">カードをタップして確認</div>
+    <div class="illustration-card" onclick="toggleCardMeaning()">
+      <div class="illustration-placeholder" id="card-art">🖼️</div>
+      <div class="illustration-info">
+        <div class="word-kicker">Vocabulary</div>
+        <div class="word-main-large" id="card-word">---</div>
+        <div class="word-meaning-large hidden" id="card-meaning">---</div>
+        <div class="tap-hint" id="card-hint" style="position:static;margin-top:14px;">カードをタップして意味を確認</div>
+      </div>
+    </div>
+    <div class="feature-row">
+      <div class="feature-chip"><strong>🔊 発音</strong><span>あとで音声機能を追加</span></div>
+      <div class="feature-chip"><strong>🎨 Illustration</strong><span>事前生成画像を表示</span></div>
     </div>
 
     <div id="card-controls" class="hidden">
@@ -426,9 +444,23 @@
 
   function updateDashboardStats() {
     const today = new Date().toISOString().split('T')[0];
+    const dueCount = words.filter(w => w.nextReviewDate <= today).length;
+    const masteredCount = words.filter(w => w.interval >= 4).length;
     document.getElementById('stat-total').innerText = words.length;
-    document.getElementById('stat-due').innerText = words.filter(w => w.nextReviewDate <= today).length;
-    document.getElementById('stat-mastered').innerText = words.filter(w => w.interval >= 4).length;
+    document.getElementById('stat-due').innerText = dueCount;
+    document.getElementById('stat-mastered').innerText = masteredCount;
+    const historyEl = document.getElementById('stat-history');
+    if (historyEl) historyEl.innerText = testHistory.length;
+    const rateEl = document.getElementById('mastered-rate');
+    if (rateEl) rateEl.innerText = words.length ? Math.round(masteredCount / words.length * 100) + '%' : '0%';
+    const dueProgress = document.getElementById('due-progress');
+    if (dueProgress) dueProgress.style.width = words.length ? Math.min(100, dueCount / words.length * 100) + '%' : '0%';
+    const goal = document.getElementById('daily-limit');
+    const goalValue = goal ? goal.value : 10;
+    const goalCount = document.getElementById('goal-count');
+    const goalPreview = document.getElementById('goal-preview');
+    if (goalCount) goalCount.innerText = goalValue;
+    if (goalPreview) goalPreview.innerText = goalValue;
   }
 
   function switchScreen(screenId) {
